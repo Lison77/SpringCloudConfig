@@ -1,0 +1,3 @@
+# SpringCloudConfig
+springcloud配置文件，存放于git上
+学习本地通过远程获取git上的配置文件
