@@ -1,0 +1,62 @@
+#服务配置
+server:
+  port: 10000
+  max-http-header-size: 10240
+  tomcat:
+    accesslog:
+      enabled: true
+      directory: ./logs
+      buffered: false
+      pattern: '%h %l %u %t "%r" %s %b %T'
+    basedir: ./
+
+spring:
+  application:
+    name: springcloud-configs
+  mvc:
+    throw-exception-if-no-handler-found: true
+  profiles:
+    #    active: local
+    #active: prod
+    active: dev
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    initialSize: 5
+    minIdle: 5
+    maxActive: 100
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 30000
+    validationQuery: select 'x'
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxPoolPreparedStatementPerConnectionSize: 20
+    filters: stat,wall,slf4j
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+    useGlobalDataSourceStat: true
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+
+mybatis-plus:
+  type-aliases-package: com.test.demo.entity
+  mapper-locations: classpath*:mapper/*.xml
+  global-config:
+    db-config:
+      id-type: auto
+
+logging:
+  config: classpath:logback-spring.xml
+  file:
+    path: ./logs/
+
+aliyun:
+  appKey: testAppKey
+  appSecret: testAppSecret
+  #host: test.demo.cn
+  provicePvPath: /bigdata/v1/basic/data
+
+
+
